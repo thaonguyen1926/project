@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron text-center">
+    <h1 style="color: blue">QUẢN LÝ CHỈ ĐỊNH XÉT NGHIỆM</h1>
+</div>
+
+@model QUANLYXETNGHIEM.Models.OderTestInfo
+@using (Html.BeginForm("Index", "ObjectTest"))
+{ 
+<div class="container">
+    <div class="row">
+        @model QUANLYXETNGHIEM.Models.OderTestInfo
+        @using (Html.BeginForm("Index", "OrderTest"))
+        {
+            <div class="container">
+                <div class="row">
+                    <div>
+                        <h3>Thông tin chỉ định xét nghiệm</h3>
+                    </div>
+                    <div>
+                        @Html.Label("Mã SID")
+                        @Html.TextBoxFor(model => model.SID, new { @class = "form-control", @Value = Model.SID })
+                        @Html.Label("Tên bệnh nhân")
+                        @Html.TextBoxFor(model => model.PatientName, new { @class = "form-control", @Value = Model.PatientName })
+                        @Html.Label("Chỉ định xét nghiệm")
+                        @Html.TextBoxFor(model => model.TestCode, new { @class = "form-control", @Value = Model.TestCode })
+                        @Html.Label("Kết quả")
+                        @Html.TextBoxFor(model => model.Result, new { @class = "form-control", @Value = Model.Result })
+                        @Html.Label("CSBT")
+                        @Html.TextBoxFor(model => model.NormalFact, new { @class = "form-control", @Value = Model.NormalFact })
+                        @Html.Label("Thời gian chỉ định")
+                        @Html.TextBoxFor(model => model.OrderDate, new { @class = "form-control", @Value = Model.OrderDate })
+                        @Html.Label("Thời gian trả kết quả")
+                        @Html.TextBoxFor(model => model.ResultDate, new { @class = "form-control", @Value = Model.ResultDate })
+                        <div>
+                            <button type="submit" value="AddNew" name="SubmitName" class="btn btn-success">Thêm</button>
+                            <button type="submit" value="Edit" name="SubmitName" class="btn btn-info">Cập nhật</button>
+                        </div>
+                        <div>
+                            <h3>Danh sách nhóm xét nghiệm</h3>
+                        </div>
+                        <!--<button type="button" class="btn btn-success">Thêm</button>-->
+                        @*<form action="HomeBack" method="post">*@
+                        <!--<button type="submit" class="btn btn-primary">Trở về</button>-->
+                        @*</form>*@
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>SID</th>
+                                <th>Tên bệnh nhân</th>
+                                <th>Chỉ định xét nghiệm</th>
+                                <th>Kết quả</th>
+                                <th>CSBT</th>
+                                <th>Thời gian chỉ định</th>
+                                <th>Thời gian trả kết quả</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in @Model.GetListObjectTest())
+                            {
+                                <tr>
+                                    <td>@item.SID</td>
+                                    <td>
+                                        <button type="submit" value="@("Delete"+item.SID)" name="SubmitName" class="btn btn-danger">Xóa</button>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                        @*<tbody>
+            <tr>
+                <td>01</td>
+                <td>Nguyễn Trung Kiên</td>
+                <td>XN ÐÔNG MÁU</td>
+                <td>14.3</td>
+                <th>13.5 - 16.4</th>
+                <th>15:32</th>
+                <th>16:03</th>
+                <td>
+                    <button type="button" class="btn btn-warning">Sửa</button>
+                    <button type="button" class="btn btn-danger">Xóa</button>
+                </td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>Đồng Đăng Tuấn</td>
+                <td>Màng HC niệu</td>
+                <td>10.00</td>
+                <td>11.5 - 15.3</td>
+                <td>14:23</td>
+                <td>14:58</td>
+                <td>
+                    <button type="button" class="btn btn-warning">Sửa</button>
+                    <button type="button" class="btn btn-danger">Xóa</button>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>Lê Trung Hiếu</td>
+                <td>Độ tập trung tiểu cầu</td>
+                <td>15.2</td>
+                <td>11 - 14</td>
+                <td>15:58</td>
+                <td>16:32</td>
+                <td>
+                    <button type="button" class="btn btn-warning">Sửa</button>
+                    <button type="button" class="btn btn-danger">Xóa</button>
+                </td>
+            </tr>
+        </tbody>*@
+                    </table>
+
+                    </div>
+            </div>
+
+}

@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron text-center">
+    <h1 style="color: blue">HỆ THỐNG KHOA PHÒNG - CHỈ ĐỊNH</h1>
+</div>
+@model QUANLYXETNGHIEM.Models.LocationInfo
+@using (Html.BeginForm("Index", "Location"))
+{
+<div class="container">
+    <div class="row">
+        <div>
+            <h3>Thông tin khoa phòng</h3>
+        </div>
+        <div>
+            @Html.Label("Mã khoa phòng")
+            @Html.TextBoxFor(model => model.LocationID, new { @class = "form-control", @Value = Model.LocationID })
+            @Html.Label("Tên khoa phòng")
+            @Html.TextBoxFor(model => model.LocationName, new { @class = "form-control", @Value = Model.LocationName })
+        </div>
+        <div>
+            <button type="submit" value="AddNew" name="SubmitName" class="btn btn-success">Thêm</button>
+            <button type="submit" value="Edit" name="SubmitName" class="btn btn-info">Cập nhật</button>
+        </div>
+        <div>
+            <h3>Danh sách khoa phòng - chỉ định</h3>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Mã phòng</th>
+                    <th>Tên phòng</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @Model.GetListLocation())
+                {
+                    <tr>
+                        <td>@item.LocationID</td>
+                        <td>@item.LocationName</td>
+                        <td>
+                            <button type="submit" value="@("Delete"+item.LocationID)" name="SubmitName" class="btn btn-danger">Xóa</button>
+                        </td>
+
+                    </tr>
+                }
+                @*<tr>
+            <td>HSCC</td>
+            <td>Khoa Điều trị tích cực nội khoa</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+
+        </tr>
+        <tr>
+            <td>A10</td>
+            <td>Đơn nguyên Nội tim mạch</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>
+        <tr>
+            <td>PKNT</td>
+            <td>PK Ngoại trú</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>
+        <tr>
+            <td>1162</td>
+            <td>Hồi Sức Ngoại Tim Mạch</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>
+        <tr>
+            <td>1202</td>
+            <td>PK Khoa Cấp cứu chống độc 1</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>
+        <tr>
+            <td>1282</td>
+            <td>Khoa khám và Điều trị 24 giờ</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>
+        <tr>
+            <td>PK22</td>
+            <td>Khoa Thần kinh</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>
+        <tr>
+            <td>PK57</td>
+            <td>Khoa PTGM Hồi sức tim mạch</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>
+        <tr>
+            <td>PKTNBC</td>
+            <td>Khoa Tâm thần</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>
+        <tr>
+            <td>TNB</td>
+            <td>Đơn vị Khám chuyên khoa và điều trị ban ngày</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>
+        <tr>
+            <td>YHCT</td>
+            <td>Khoa Y học cổ truyền</td>
+            <td>
+                <button type="button" class="btn btn-warning">Sửa</button>
+                <button type="button" class="btn btn-danger">Xóa</button>
+            </td>
+        </tr>*@
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+}

@@ -1,0 +1,168 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron text-center">
+	<h1 style="color: blue">QUẢN LÝ DANH MỤC XÉT NGHIỆM</h1>
+</div>
+@model QUANLYXETNGHIEM.Models.TestCodeInfo
+@using (Html.BeginForm("Index", "TestCode"))
+{
+	<div class="container">
+		<div class="row">
+			<div>
+				<h3>Thông tin xét nghiệm</h3>
+			</div>
+			<div>
+				@Html.Label("Mã xét nghiệm")
+				@Html.TextBoxFor(model => model.TestCode, new { @class = "form-control", @Value = Model.TestCode })
+				@Html.Label("Tên xét nghiệm")
+				@Html.TextBoxFor(model => model.TestName, new { @class = "form-control", @Value = Model.TestName })
+				@Html.Label("CSBT")
+				@Html.TextBoxFor(model => model.NormalSetOfStats, new { @class = "form-control", @Value = Model.NormalSetOfStats })
+				@Html.Label("Nhóm xét nghiệm")
+				@Html.TextBoxFor(model => model.TestCode, new { @class = "form-control", @Value = Model.TestCode })
+
+			</div>
+			<div>
+				<button type="submit" value="AddNew" name="SubmitName" class="btn btn-success">Thêm</button>
+				<button type="submit" value="Edit" name="SubmitName" class="btn btn-info">Cập nhật</button>
+			</div>
+			<div>
+				<h3>Danh mục xét nghiệm</h3>
+			</div>
+			<!--<button type="button" class="btn btn-success">Thêm</button>-->
+			@*<form action="HomeBack" method="post">*@
+			<!--<button type="submit" class="btn btn-primary">Trở về</button>-->
+			@*</form>*@
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Mã xét nghiệm</th>
+					<th>Tên xét nghiệm</th>
+					<th>CSBT</th>
+					<th>Thao tác</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in @Model.GetListTestCode())
+				{
+					<tr>
+						<td>@item.TestCode</td>
+						<td>@item.TestName</td>
+						<td>
+							<button type="submit" value="@("Delete"+item.TestCode)" name="SubmitName" class="btn btn-danger">Xóa</button>
+						</td>
+
+					</tr>
+				}
+
+			</tbody>
+			@*<tbody>
+			<tr>
+				<td>11077</td>
+				<td>XN ÐÔNG MÁU</td>
+				<td>13.5 - 16.4</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+			<tr>
+				<td>11078</td>
+				<td>Màng HC niệu</td>
+				<td>11.5 - 15.3</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+			<tr>
+				<td>11079</td>
+				<td>Xét nghiệm tế bào hạch [hạch đồ]</td>
+				<td>10.2 - 12</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+			<tr>
+				<td>11080</td>
+				<td>Độ tập trung tiểu cầu</td>
+				<td>11 - 14</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+			<tr>
+				<td>11081</td>
+				<td>Hình dáng và kích thước hồng cầu niệu</td>
+				<td>94 - 141</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+			<tr>
+				<td>11082</td>
+				<td>Đo đường kính hồng cầu</td>
+				<td>67 - 127</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+			<tr>
+				<td>110HCT</td>
+				<td>Phân tích CD19</td>
+				<td>52 - 130</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+			<tr>
+				<td>112MCH</td>
+				<td>Tế bào võng</td>
+				<td>46 - 153</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+			<tr>
+				<td>106%LYM</td>
+				<td>Tế bào biểu mô</td>
+				<td>44 - 144</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+			<tr>
+				<td>108%EOS</td>
+				<td>Bạch cầu đoạn trung tính [SEG TT]</td>
+				<td>50 - 148</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+			<tr>
+				<td>109%BASO</td>
+				<td>Số lượng tế bào có nhân</td>
+				<td>77 - 122</td>
+				<td>
+					<button type="button" class="btn btn-warning">Sửa</button>
+					<button type="button" class="btn btn-danger">Xóa</button>
+				</td>
+			</tr>
+		</tbody>*@
+		</table>
+
+		</div>
+	</div>
+}

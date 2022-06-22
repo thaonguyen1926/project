@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>HỆ THỐNG QUẢN LÝ XÉT NGHIỆM</h1>
+        <p>DEVELOPER: NGUYEN THI THAO - NGUYEN TRONG DUNG - LE TRUNG HIEU</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <ul class="list-group">
+                    <li>@Html.ActionLink("DANH MỤC NHÓM XÉT NGHIỆM", "Index", "Category")</li>
+                    <li>@Html.ActionLink("QUẢN LÝ THÔNG TIN BỆNH NHÂN", "Index", "Patient")</li>
+                    <li>@Html.ActionLink("DANH MỤC KHOA PHÒNG - CHỈ ĐỊNH", "Index", "Location")</li>
+                    <li>@Html.ActionLink("DANH MỤC BÁC SĨ CHỈ ĐỊNH", "Index", "Doctor")</li>
+                    <li>@Html.ActionLink("DANH MUC ĐỐI TƯỢNG BỆNH NHÂN", "Index", "Object")</li>
+                    <li>@Html.ActionLink("DANH MỤC DANH MỤC XÉT NGHIỆM", "Index", "TestCode")</li>
+                    <li>@Html.ActionLink("DANG MỤC CHỈ ĐỊNH XÉT NGHIỆM", "Index", "OrderTest")</li>
+
+                    @*<li class="list-group-item"><a href="/LIS/Category.jsp">Quản lý nhóm xét nghiệm</a></li>
+                    <li class="list-group-item"><a href="/LIS/Patient.jsp">Quản lý thông tin bệnh nhân</a></li>
+                    <li class="list-group-item"><a href="/LIS/Location.jsp">Quản lý khoa phòng - chỉ định</a></li>
+                    <li class="list-group-item"><a href="/LIS/Doctor.jsp">Quản lý bác sĩ chỉ định</a></li>
+                    <li class="list-group-item"><a href="/LIS/Object.jsp">Quản lý đối tượng bệnh nhân</a></li>
+                    <li class="list-group-item"><a href="/LIS/TestCode.jsp">Quản lý danh mục xét nghiệm</a></li>
+                    <li class="list-group-item"><a href="/LIS/Ordertest.jsp">Quản lý chỉ định xét nghiệm</a></li>*@
+                </ul>
+            </div>
+
+            <div class="col-4"></div>
+
+        </div>
+    </div>
+</body>

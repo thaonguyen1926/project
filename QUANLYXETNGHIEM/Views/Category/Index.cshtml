@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron text-center">
+    <h1 style="color: blue">QUẢN LÝ NHÓM XÉT NGHIỆM</h1>
+</div>
+@model QUANLYXETNGHIEM.Models.CategoryInfo
+@using (Html.BeginForm("Index", "Category"))
+{
+    <div class="container">
+        <div class="row">
+            <div>
+                <h3>Thông tin nhóm xét nghiệm</h3>
+            </div>
+            <div>
+                @Html.Label("Mã nhóm xét nghiệm")
+                @Html.TextBoxFor(model => model.CategoryID, new { @class = "form-control", @Value = Model.CategoryID })
+                @Html.Label("Tên nhóm xét nghiệm")
+                @Html.TextBoxFor(model => model.CategoryName, new { @class = "form-control", @Value = Model.CategoryName })
+            </div>
+            <div>
+                <button type="submit" value="AddNew" name="SubmitName" class="btn btn-success">Thêm</button>
+                <button type="submit" value="Edit" name="SubmitName" class="btn btn-info">Cập nhật</button>
+            </div>
+            <div>
+                <h3>Danh sách nhóm xét nghiệm</h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mã nhóm</th>
+                        <th>Tên nhóm</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in @Model.GetListCategory())
+                    {
+                        <tr>
+                            <td>@item.CategoryID</td>
+                            <td>@item.CategoryName</td>
+                            <td>
+                                <button type="submit" value="@("Delete"+item.CategoryID)" name="SubmitName" class="btn btn-danger">Xóa</button>
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+}
+
+

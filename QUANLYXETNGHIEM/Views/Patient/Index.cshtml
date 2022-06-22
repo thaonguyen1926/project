@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron text-center">
+    <h1 style="color: blue">QUẢN LÝ THÔNG TIN BỆNH NHÂN</h1>
+</div>
+@model QUANLYXETNGHIEM.Models.PatientInfo
+@using (Html.BeginForm("Index", "Patient"))
+{
+    <div class="container">
+        <div class="row">
+            <div>
+                <h3>Thông tin bệnh nhân</h3>
+            </div>
+            <div>
+                @Html.Label("PID")
+                @Html.TextBoxFor(model => model.PID, new { @class = "form-control", @Value = Model.PID })
+                @Html.Label("SID")
+                @Html.TextBoxFor(model => model.SID, new { @class = "form-control", @Value = Model.SID })
+                @Html.Label("Tên bệnh nhân")
+                @Html.TextBoxFor(model => model.PatientName, new { @class = "form-control", @Value = Model.PatientName })
+                @Html.Label("Giới tính")
+                @Html.TextBoxFor(model => model.Sex, new { @class = "form-control", @Value = Model.Sex })
+                @Html.Label("Địa chỉ")
+                @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @Value = Model.Address })
+                @Html.Label("Ngày vào viện")
+                @Html.TextBoxFor(model => model.Datein, new { @class = "form-control", @Value = Model.Datein })
+                @Html.Label("Ngày sinh")
+                @Html.TextBoxFor(model => model.YearOfBirth, new { @class = "form-control", @Value = Model.YearOfBirth })
+                @Html.Label("MÃ bác sĩ")
+                @Html.TextBoxFor(model => model.DoctorID, new { @class = "form-control", @Value = Model.DoctorID })
+                @Html.Label("Mã khoa phòng - chỉ định")
+                @Html.TextBoxFor(model => model.LocationID, new { @class = "form-control", @Value = Model.LocationID })
+                @Html.Label("Mã đối tượng")
+                @Html.TextBoxFor(model => model.ObjectID, new { @class = "form-control", @Value = Model.ObjectID })
+                @Html.Label("Chẩn đoán")
+                @Html.TextBoxFor(model => model.Diagnose, new { @class = "form-control", @Value = Model.Diagnose })
+            </div>
+            <div>
+                <button type="submit" value="AddNew" name="SubmitName" class="btn btn-success">Thêm</button>
+                <button type="submit" value="Edit" name="SubmitName" class="btn btn-info">Cập nhật</button>
+            </div>
+            <div>
+                <h3>Danh sách bệnh nhân</h3>
+            </div>
+            <!--<button type="button" class="btn btn-success">Thêm</button>-->
+            @*<form action="HomeBack" method="post">*@
+            <!--<button type="submit" class="btn btn-primary">Trở về</button>-->
+            @*</form>*@
+            <!--<div class="col-3">
+        <table class="table">
+        </table>
+    </div>
+    <div class="col-9">-->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mã XN</th>
+                        <th>Tên XN</th>
+                        <th>Chỉ định xét nghiệm</th>
+                        <th>Kết quả</th>
+                        <th>CSBT</th>
+                        <th>Thời gian chỉ định</th>
+                        <th>Thời gian trả kết quả</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in @Model.GetListPatient())
+                    {
+                    <tr>
+                        <td>@item.PID</td>
+                        <td>@item.SID</td>
+                        <td>@item.PatientName</td>
+                        <td>@item.Sex</td>
+                        <td>@item.Address</td>
+                        <td>@item.Datein</td>
+                        <td>@item.YearOfBirth</td>
+                        <td>@item.DoctorID</td>
+                        <td>@item.LocationID</td>
+                        <td>@item.ObjectID</td>
+                        <td>@item.Diagnose</td>
+                        <td>
+                            <button type="submit" value="@("Delete" + item.PID)" name="SubmitName" class="btn btn-danger">Xóa</button>
+                        </td>
+
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        </div>
+   
+}

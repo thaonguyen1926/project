@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron text-center">
+    <h1 style="color: blue">DANH MỤC BÁC SĨ CHỈ ĐỊNH</h1>
+</div>
+@model QUANLYXETNGHIEM.Models.DoctorInfo
+@using (Html.BeginForm("Index", "Doctor"))
+{
+    <div class="container">
+        <div class="row">
+            <div>
+                <h3>Thông tin nhóm xét nghiệm</h3>
+            </div>
+            <div>
+                @Html.Label("Mã bác sĩ")
+                @Html.TextBoxFor(model => model.DoctorID, new { @class = "form-control", @Value = Model.DoctorID })
+                @Html.Label("Tên bác sĩ")
+                @Html.TextBoxFor(model => model.DoctorName, new { @class = "form-control", @Value = Model.DoctorName })
+            </div>
+            <div>
+                <button type="submit" value="AddNew" name="SubmitName" class="btn btn-success">Thêm</button>
+                <button type="submit" value="Edit" name="SubmitName" class="btn btn-info">Cập nhật</button>
+            </div>
+            <div>
+                <h3>Danh sách nhóm xét nghiệm</h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mã nhóm</th>
+                        <th>Tên nhóm</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in @Model.GetListCategory())
+                    {
+                        <tr>
+                            <td>@item.DoctorID</td>
+                            <td>@item.DoctorName</td>
+                            <td>
+                                <button type="submit" value="@("Delete"+item.DoctorID)" name="SubmitName" class="btn btn-danger">Xóa</button>
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+}
+
+
